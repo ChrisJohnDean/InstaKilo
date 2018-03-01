@@ -16,6 +16,7 @@
 @property (nonatomic) UICollectionViewFlowLayout *simpleLayout;
 @property (nonatomic) NSMutableArray *arrayOfSections;
 @property (nonatomic) NSMutableArray *arrayOfArrays;
+@property (nonatomic) BOOL isSortedBySubject;
 
 @end
 
@@ -26,6 +27,11 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.isSortedBySubject = YES;
+    
+    [self setupSimpleLayout];
+    self.collectionView.collectionViewLayout = self.simpleLayout;
     
     self.photoObjects = [[NSMutableArray alloc] init];
     self.arrayOfSections = [[NSMutableArray alloc] init];
@@ -48,15 +54,52 @@ static NSString * const reuseIdentifier = @"Cell";
     [self addPhotoObject:@"stairs_up" withLocation:@"JeremysHouse" withSubject:@"inside"];
     
     [self sortArraysBySubject];
+    
     // Register cell classes
  //   [self.collectionView registerClass:[MyCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
 
 }
 
+- (IBAction)toggleSection:(UIBarButtonItem *)sender {
+    [self.arrayOfSections removeAllObjects];
+    [self.arrayOfArrays removeAllObjects];
+    
+    if(self.isSortedBySubject) {
+        [self sortArraysByLocation];
+        self.isSortedBySubject = NO;
+    } else {
+        [self sortArraysBySubject];
+        self.isSortedBySubject = YES;
+    }
+    [self.collectionView reloadData];
+}
+
+
+
 - (void)addPhotoObject:(NSString*)imageName withLocation:(NSString*)location withSubject:(NSString*)subject {
     UIImage *photo = [UIImage imageNamed:imageName];
     PhotoObject *photoObject = [[PhotoObject alloc] initWithPhoto:photo withLocation:location withSubject:subject];
     [self.photoObjects addObject:photoObject];
+}
+
+- (void)sortArraysByLocation {
+    
+    for(PhotoObject *photoObject in self.photoObjects) {
+        
+        if([self.arrayOfSections containsObject:photoObject.location]) {
+            NSInteger indexValue = [self.arrayOfSections indexOfObject:photoObject.location];
+            NSMutableArray *mySectionArray = self.arrayOfArrays[indexValue];
+            [mySectionArray addObject:photoObject];
+        } else {
+            [self.arrayOfSections addObject:photoObject.location];
+            NSMutableArray *myPhotoObjectArray = [[NSMutableArray alloc] init];
+            [myPhotoObjectArray addObject:photoObject];
+            [self.arrayOfArrays addObject:myPhotoObjectArray];
+        }
+        
+        
+    }
+    
 }
 
 - (void)sortArraysBySubject {
@@ -94,10 +137,10 @@ static NSString * const reuseIdentifier = @"Cell";
     self.simpleLayout.minimumLineSpacing = 10; //Min vertical spacing
     
     //Add this line so headers will appear
-    self.simpleLayout.headerReferenceSize = CGSizeMake(30, self.collectionView.frame.size.height);
-    
-    //Add this line so footers will appear
-    self.simpleLayout.footerReferenceSize = CGSizeMake(30, self.collectionView.frame.size.height);
+//    self.simpleLayout.headerReferenceSize = CGSizeMake(30, self.collectionView.frame.size.height);
+//
+//    //Add this line so footers will appear
+//    self.simpleLayout.footerReferenceSize = CGSizeMake(30, self.collectionView.frame.size.height);
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -127,6 +170,30 @@ static NSString * const reuseIdentifier = @"Cell";
     
     return cell;
 }
+//
+//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+//           viewForSupplementaryElementOfKind:(NSString *)kind
+//                                 atIndexPath:(NSIndexPath *)indexPath
+//{
+//    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+//        MyHeaderView *headerView = [self.collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+//                                                                           withReuseIdentifier:@"MyHeaderView"
+//                                                                                  forIndexPath:indexPath];
+//        headerView.label.text = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
+//        return headerView;
+//    }
+//    else if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
+//        MyFooterView *footerView = [self.collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter
+//                                                                           withReuseIdentifier:@"MyFooterView"
+//                                                                                  forIndexPath:indexPath];
+//        footerView.label.text = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
+//        return footerView;
+//    }
+//    else {
+//        return nil;
+//    }
+//}
+
 
 #pragma mark <UICollectionViewDelegate>
 
