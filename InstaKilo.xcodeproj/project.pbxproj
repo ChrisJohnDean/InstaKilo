@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		890623AB2047497200A4BAA3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 890623AA2047497200A4BAA3 /* AppDelegate.m */; };
-		890623AE2047497200A4BAA3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 890623AD2047497200A4BAA3 /* ViewController.m */; };
 		890623B12047497200A4BAA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 890623AF2047497200A4BAA3 /* Main.storyboard */; };
 		890623B32047497200A4BAA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 890623B22047497200A4BAA3 /* Assets.xcassets */; };
 		890623B62047497200A4BAA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 890623B42047497200A4BAA3 /* LaunchScreen.storyboard */; };
 		890623B92047497200A4BAA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 890623B82047497200A4BAA3 /* main.m */; };
 		890623C32047497300A4BAA3 /* InstaKiloTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 890623C22047497300A4BAA3 /* InstaKiloTests.m */; };
 		890623CE2047497300A4BAA3 /* InstaKiloUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 890623CD2047497300A4BAA3 /* InstaKiloUITests.m */; };
+		8906241E2047782900A4BAA3 /* MyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8906241D2047782900A4BAA3 /* MyCollectionViewCell.m */; };
+		89062424204778B400A4BAA3 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89062423204778B400A4BAA3 /* CollectionViewController.m */; };
+		8906242720477D7500A4BAA3 /* PhotoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8906242620477D7500A4BAA3 /* PhotoObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +40,6 @@
 		890623A62047497200A4BAA3 /* InstaKilo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaKilo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		890623A92047497200A4BAA3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		890623AA2047497200A4BAA3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		890623AC2047497200A4BAA3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		890623AD2047497200A4BAA3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		890623B02047497200A4BAA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		890623B22047497200A4BAA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		890623B52047497200A4BAA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +51,12 @@
 		890623C92047497300A4BAA3 /* InstaKiloUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstaKiloUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		890623CD2047497300A4BAA3 /* InstaKiloUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstaKiloUITests.m; sourceTree = "<group>"; };
 		890623CF2047497300A4BAA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8906241C2047782900A4BAA3 /* MyCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCollectionViewCell.h; sourceTree = "<group>"; };
+		8906241D2047782900A4BAA3 /* MyCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewCell.m; sourceTree = "<group>"; };
+		89062422204778B400A4BAA3 /* CollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		89062423204778B400A4BAA3 /* CollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		8906242520477D7500A4BAA3 /* PhotoObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoObject.h; sourceTree = "<group>"; };
+		8906242620477D7500A4BAA3 /* PhotoObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,13 +109,17 @@
 			children = (
 				890623A92047497200A4BAA3 /* AppDelegate.h */,
 				890623AA2047497200A4BAA3 /* AppDelegate.m */,
-				890623AC2047497200A4BAA3 /* ViewController.h */,
-				890623AD2047497200A4BAA3 /* ViewController.m */,
 				890623AF2047497200A4BAA3 /* Main.storyboard */,
 				890623B22047497200A4BAA3 /* Assets.xcassets */,
 				890623B42047497200A4BAA3 /* LaunchScreen.storyboard */,
 				890623B72047497200A4BAA3 /* Info.plist */,
 				890623B82047497200A4BAA3 /* main.m */,
+				8906241C2047782900A4BAA3 /* MyCollectionViewCell.h */,
+				8906241D2047782900A4BAA3 /* MyCollectionViewCell.m */,
+				89062422204778B400A4BAA3 /* CollectionViewController.h */,
+				89062423204778B400A4BAA3 /* CollectionViewController.m */,
+				8906242520477D7500A4BAA3 /* PhotoObject.h */,
+				8906242620477D7500A4BAA3 /* PhotoObject.m */,
 			);
 			path = InstaKilo;
 			sourceTree = "<group>";
@@ -265,8 +275,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				890623AE2047497200A4BAA3 /* ViewController.m in Sources */,
+				8906242720477D7500A4BAA3 /* PhotoObject.m in Sources */,
 				890623B92047497200A4BAA3 /* main.m in Sources */,
+				8906241E2047782900A4BAA3 /* MyCollectionViewCell.m in Sources */,
+				89062424204778B400A4BAA3 /* CollectionViewController.m in Sources */,
 				890623AB2047497200A4BAA3 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
