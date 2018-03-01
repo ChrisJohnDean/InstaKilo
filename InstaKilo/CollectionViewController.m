@@ -8,11 +8,14 @@
 
 #import "CollectionViewController.h"
 #import "PhotoObject.h"
+#import "MyCollectionViewCell.h"
 
 @interface CollectionViewController ()
 
 @property (nonatomic) NSMutableArray *photoObjects;
 @property (nonatomic) UICollectionViewFlowLayout *simpleLayout;
+@property (nonatomic) NSMutableArray *arrayOfSections;
+@property (nonatomic) NSMutableArray *arrayOfArrays;
 
 @end
 
@@ -25,25 +28,28 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewDidLoad];
     
     self.photoObjects = [[NSMutableArray alloc] init];
+    self.arrayOfSections = [[NSMutableArray alloc] init];
+    self.arrayOfArrays = [[NSMutableArray alloc] init];
     
     [self addPhotoObject:@"back_porch" withLocation:@"MyHouse" withSubject:@"outside"];
     [self addPhotoObject:@"bathroom" withLocation:@"MyHouse" withSubject:@"inside"];
     [self addPhotoObject:@"bedroom" withLocation:@"MyHouse" withSubject:@"inside"];
     [self addPhotoObject:@"coat_room" withLocation:@"MyHouse" withSubject:@"inside"];
-    [self addPhotoObject:@"cursed_chalice" withLocation:@"HannahsHouse" withSubject:@"ouside"];
+    [self addPhotoObject:@"cursed_chalice" withLocation:@"HannahsHouse" withSubject:@"outside"];
     [self addPhotoObject:@"dining_room" withLocation:@"HannahsHouse" withSubject:@"inside"];
     [self addPhotoObject:@"dungeon" withLocation:@"HannahsHouse" withSubject:@"inside"];
     [self addPhotoObject:@"front_door" withLocation:@"HannahsHouse" withSubject:@"outside"];
-    [self addPhotoObject:@"generator" withLocation:@"HannahsHouse" withSubject:@"ouside"];
+    [self addPhotoObject:@"generator" withLocation:@"HannahsHouse" withSubject:@"outside"];
     [self addPhotoObject:@"kitchen" withLocation:@"JeremysHouse" withSubject:@"inside"];
     [self addPhotoObject:@"labratory" withLocation:@"JeremysHouse" withSubject:@"inside"];
     [self addPhotoObject:@"library" withLocation:@"JeremysHouse" withSubject:@"inside"];
     [self addPhotoObject:@"mysterious_lake" withLocation:@"JeremysHouse" withSubject:@"outside"];
-    [self addPhotoObject:@"secret_passage" withLocation:@"JeremysHouse" withSubject:@"ouside"];
+    [self addPhotoObject:@"secret_passage" withLocation:@"JeremysHouse" withSubject:@"outside"];
     [self addPhotoObject:@"stairs_up" withLocation:@"JeremysHouse" withSubject:@"inside"];
     
+    [self sortArraysBySubject];
     // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+ //   [self.collectionView registerClass:[MyCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
 
 }
 
@@ -51,6 +57,26 @@ static NSString * const reuseIdentifier = @"Cell";
     UIImage *photo = [UIImage imageNamed:imageName];
     PhotoObject *photoObject = [[PhotoObject alloc] initWithPhoto:photo withLocation:location withSubject:subject];
     [self.photoObjects addObject:photoObject];
+}
+
+- (void)sortArraysBySubject {
+    
+    for(PhotoObject *photoObject in self.photoObjects) {
+        
+        if([self.arrayOfSections containsObject:photoObject.subject]) {
+            NSInteger indexValue = [self.arrayOfSections indexOfObject:photoObject.subject];
+            NSMutableArray *mySectionArray = self.arrayOfArrays[indexValue];
+            [mySectionArray addObject:photoObject];
+        } else {
+            [self.arrayOfSections addObject:photoObject.subject];
+            NSMutableArray *myPhotoObjectArray = [[NSMutableArray alloc] init];
+            [myPhotoObjectArray addObject:photoObject];
+            [self.arrayOfArrays addObject:myPhotoObjectArray];
+        }
+        
+        
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,20 +103,27 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return self.arrayOfSections.count;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of items
-    return 0;
+    
+    NSMutableArray *array  = [[NSMutableArray alloc] init];
+    array = self.arrayOfArrays[section];
+    return array.count;
+    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+
+    NSMutableArray *array  = [[NSMutableArray alloc] init];
+    array = self.arrayOfArrays[indexPath.section];
     
-    // Configure the cell
+    PhotoObject *photoObject = array[indexPath.row];
+    
+    MyCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    cell.imageView.image = photoObject.myPhoto;
     
     return cell;
 }
