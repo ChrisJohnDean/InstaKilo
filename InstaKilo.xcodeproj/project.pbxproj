@@ -17,6 +17,8 @@
 		8906241E2047782900A4BAA3 /* MyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8906241D2047782900A4BAA3 /* MyCollectionViewCell.m */; };
 		89062424204778B400A4BAA3 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89062423204778B400A4BAA3 /* CollectionViewController.m */; };
 		8906242720477D7500A4BAA3 /* PhotoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8906242620477D7500A4BAA3 /* PhotoObject.m */; };
+		8906242A2047BCED00A4BAA3 /* MyHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 890624292047BCED00A4BAA3 /* MyHeaderView.m */; };
+		8906242D2047BD0200A4BAA3 /* MyFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8906242C2047BD0200A4BAA3 /* MyFooterView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,10 @@
 		89062423204778B400A4BAA3 /* CollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		8906242520477D7500A4BAA3 /* PhotoObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoObject.h; sourceTree = "<group>"; };
 		8906242620477D7500A4BAA3 /* PhotoObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoObject.m; sourceTree = "<group>"; };
+		890624282047BCED00A4BAA3 /* MyHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHeaderView.h; sourceTree = "<group>"; };
+		890624292047BCED00A4BAA3 /* MyHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHeaderView.m; sourceTree = "<group>"; };
+		8906242B2047BD0200A4BAA3 /* MyFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyFooterView.h; sourceTree = "<group>"; };
+		8906242C2047BD0200A4BAA3 /* MyFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyFooterView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,10 @@
 				89062423204778B400A4BAA3 /* CollectionViewController.m */,
 				8906242520477D7500A4BAA3 /* PhotoObject.h */,
 				8906242620477D7500A4BAA3 /* PhotoObject.m */,
+				890624282047BCED00A4BAA3 /* MyHeaderView.h */,
+				890624292047BCED00A4BAA3 /* MyHeaderView.m */,
+				8906242B2047BD0200A4BAA3 /* MyFooterView.h */,
+				8906242C2047BD0200A4BAA3 /* MyFooterView.m */,
 			);
 			path = InstaKilo;
 			sourceTree = "<group>";
@@ -277,7 +287,9 @@
 			files = (
 				8906242720477D7500A4BAA3 /* PhotoObject.m in Sources */,
 				890623B92047497200A4BAA3 /* main.m in Sources */,
+				8906242D2047BD0200A4BAA3 /* MyFooterView.m in Sources */,
 				8906241E2047782900A4BAA3 /* MyCollectionViewCell.m in Sources */,
+				8906242A2047BCED00A4BAA3 /* MyHeaderView.m in Sources */,
 				89062424204778B400A4BAA3 /* CollectionViewController.m in Sources */,
 				890623AB2047497200A4BAA3 /* AppDelegate.m in Sources */,
 			);

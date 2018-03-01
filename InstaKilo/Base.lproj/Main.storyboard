@@ -46,13 +46,30 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HeC-dr-L8A">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="MyHeaderView" id="HeC-dr-L8A" customClass="MyHeaderView">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XuE-h6-IeW">
+                                    <rect key="frame" x="166.5" y="15" width="42" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.73039825169999995" blue="0.71974884610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="XuE-h6-IeW" firstAttribute="centerX" secondItem="HeC-dr-L8A" secondAttribute="centerX" id="mZd-jU-vR6"/>
+                                <constraint firstItem="XuE-h6-IeW" firstAttribute="centerY" secondItem="HeC-dr-L8A" secondAttribute="centerY" id="xrz-4y-lYg"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="headerLabel" destination="XuE-h6-IeW" id="Tam-fR-j0v"/>
+                            </connections>
                         </collectionReusableView>
-                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CaO-3x-pIP">
+                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="MyFooterView" id="CaO-3x-pIP" customClass="MyFooterView">
                             <rect key="frame" x="0.0" y="100" width="375" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
+                            <color key="backgroundColor" red="1" green="0.73039825169999995" blue="0.71974884610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="XNh-Sk-JLS" id="ZnB-JW-HDm"/>

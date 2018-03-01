@@ -9,6 +9,8 @@
 #import "CollectionViewController.h"
 #import "PhotoObject.h"
 #import "MyCollectionViewCell.h"
+#import "MyHeaderView.h"
+#import "MyFooterView.h"
 
 @interface CollectionViewController ()
 
@@ -137,10 +139,10 @@ static NSString * const reuseIdentifier = @"Cell";
     self.simpleLayout.minimumLineSpacing = 10; //Min vertical spacing
     
     //Add this line so headers will appear
-//    self.simpleLayout.headerReferenceSize = CGSizeMake(30, self.collectionView.frame.size.height);
-//
-//    //Add this line so footers will appear
-//    self.simpleLayout.footerReferenceSize = CGSizeMake(30, self.collectionView.frame.size.height);
+    self.simpleLayout.headerReferenceSize = CGSizeMake(self.collectionView.frame.size.width, 30);
+
+    //Add this line so footers will appear
+    self.simpleLayout.footerReferenceSize = CGSizeMake(self.collectionView.frame.size.height, 30);
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -170,29 +172,29 @@ static NSString * const reuseIdentifier = @"Cell";
     
     return cell;
 }
-//
-//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
-//           viewForSupplementaryElementOfKind:(NSString *)kind
-//                                 atIndexPath:(NSIndexPath *)indexPath
-//{
-//    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-//        MyHeaderView *headerView = [self.collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-//                                                                           withReuseIdentifier:@"MyHeaderView"
-//                                                                                  forIndexPath:indexPath];
-//        headerView.label.text = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
-//        return headerView;
-//    }
-//    else if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
-//        MyFooterView *footerView = [self.collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter
-//                                                                           withReuseIdentifier:@"MyFooterView"
-//                                                                                  forIndexPath:indexPath];
-//        footerView.label.text = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
-//        return footerView;
-//    }
-//    else {
-//        return nil;
-//    }
-//}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+           viewForSupplementaryElementOfKind:(NSString *)kind
+                                 atIndexPath:(NSIndexPath *)indexPath
+{
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        MyHeaderView *headerView = [self.collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                                                           withReuseIdentifier:@"MyHeaderView"
+                                                                                  forIndexPath:indexPath];
+        headerView.headerLabel.text = [NSString stringWithFormat:@"%@", self.arrayOfSections[indexPath.section]];
+        return headerView;
+    }
+    else if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
+        MyFooterView *footerView = [self.collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter
+                                                                           withReuseIdentifier:@"MyFooterView"
+                                                                                  forIndexPath:indexPath];
+        //footerView.label.text = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
+        return footerView;
+    }
+    else {
+        return nil;
+    }
+}
 
 
 #pragma mark <UICollectionViewDelegate>
